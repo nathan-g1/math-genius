@@ -1,0 +1,8 @@
+client/.idea
+client/lib
+server/.idea
+cerver/lib
+*.iml
+.idea
+out/
+target/
