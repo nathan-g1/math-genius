@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+
+package mathgenius;
+
+// The Math Genius service definition.
+service MathGenius {
+  // Sends a magic add function
+  rpc MagicAdd (MagicAddRequest) returns (MagicAddReply) {}
+  // Sends a magic subtract function
+  rpc MagicSubtract (MagicSubtractRequest) returns (MagicDoubleReply) {}
+  // Sends a magic FindMin function
+  rpc MagicFindMin (MagicFindMinRequest) returns (MagicIntReply) {}
+  // Sends a magic FindMax function
+  rpc MagicFindMax (MagicFindMaxRequest) returns (MagicIntReply) {}
+}
+
+// The request message containing the parameters.
+message MagicAddRequest {
+  double a = 1;
+  double b = 2;
+}
+
+// The response message containing the magic add
+message MagicAddReply {
+  int32 sum = 1;
+}
+
+// The request message containing the parameters.
+message MagicSubtractRequest {
+  double a = 1;
+  double b = 2;
+}
+
+// The response message containing the magic add or subtraction
+message MagicDoubleReply {
+  int32 result = 1;
+}
+
+// The request message containing the parameters.
+message MagicFindMinRequest {
+  int32 a = 1;
+  int32 b = 2;
+  int32 c = 3;
+}
+
+// The request message containing the parameters.
+message MagicFindMaxRequest {
+  int32 a = 1;
+  int32 b = 2;
+  int32 c = 3;
+}
+
+// The response message containing the magic min/max
+message MagicIntReply {
+  int32 min = 1;
+}
+
+// The message counter in the server
+message OperationCounter {
+  int32 magicAddCounter = 1;
+  int32 magicSubtractCounter = 2;
+  int32 magicMinCounter = 3;
+  int32 magicMaxCounter = 4;
+}
