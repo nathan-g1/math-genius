@@ -4,5 +4,6 @@ server/.idea
 cerver/lib
 *.iml
 .idea
+.idea/
 out/
 target/
