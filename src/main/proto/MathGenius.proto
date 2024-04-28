@@ -6,21 +6,23 @@ option java_multiple_files = true;
 package mathgenius;
 
 // The Math Genius service definition.
-service MathGenius {
+service MathGeniusService {
   // Sends a magic add function
-  rpc MagicAdd (MagicAddRequest) returns (MagicAddReply) {}
+  rpc MagicAdd (MagicAddRequest) returns (MagicAddReply) {};
   // Sends a magic subtract function
-  rpc MagicSubtract (MagicSubtractRequest) returns (MagicDoubleReply) {}
+  rpc MagicSubtract (MagicSubtractRequest) returns (MagicDoubleReply) {};
   // Sends a magic FindMin function
-  rpc MagicFindMin (MagicFindMinRequest) returns (MagicIntReply) {}
+  rpc MagicFindMin (MagicFindMinRequest) returns (MagicIntReply) {};
   // Sends a magic FindMax function
-  rpc MagicFindMax (MagicFindMaxRequest) returns (MagicIntReply) {}
+  rpc MagicFindMax (MagicFindMaxRequest) returns (MagicIntReply) {};
+  // Gets a magic function call count
+  rpc GetOperationCounter(GetCounterRequest) returns (OperationCounterResponse) {};
 }
 
 // The request message containing the parameters.
 message MagicAddRequest {
-  double a = 1;
-  double b = 2;
+  double input1 = 1;
+  double input2 = 2;
 }
 
 // The response message containing the magic add
@@ -30,8 +32,8 @@ message MagicAddReply {
 
 // The request message containing the parameters.
 message MagicSubtractRequest {
-  double a = 1;
-  double b = 2;
+  double input1 = 1;
+  double input2 = 2;
 }
 
 // The response message containing the magic add or subtraction
@@ -41,27 +43,31 @@ message MagicDoubleReply {
 
 // The request message containing the parameters.
 message MagicFindMinRequest {
-  int32 a = 1;
-  int32 b = 2;
-  int32 c = 3;
+  int32 input1 = 1;
+  int32 input2 = 2;
+  int32 input3 = 3;
 }
 
 // The request message containing the parameters.
 message MagicFindMaxRequest {
-  int32 a = 1;
-  int32 b = 2;
-  int32 c = 3;
+  int32 input1 = 1;
+  int32 input2 = 2;
+  int32 input3 = 3;
 }
 
 // The response message containing the magic min/max
 message MagicIntReply {
-  int32 min = 1;
+  int32 result = 1;
 }
 
 // The message counter in the server
-message OperationCounter {
+message OperationCounterResponse {
   int32 magicAddCounter = 1;
   int32 magicSubtractCounter = 2;
   int32 magicMinCounter = 3;
   int32 magicMaxCounter = 4;
+}
+
+message GetCounterRequest {
+  string functionName = 1;
 }
