@@ -27,7 +27,7 @@ message MagicAddRequest {
 
 // The response message containing the magic add
 message MagicAddReply {
-  int32 sum = 1;
+  double sum = 1;
 }
 
 // The request message containing the parameters.
@@ -38,7 +38,7 @@ message MagicSubtractRequest {
 
 // The response message containing the magic add or subtraction
 message MagicDoubleReply {
-  int32 result = 1;
+  double result = 1;
 }
 
 // The request message containing the parameters.
