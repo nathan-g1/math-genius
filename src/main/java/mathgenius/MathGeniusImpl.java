@@ -58,6 +58,16 @@ public class MathGeniusImpl extends MathGeniusServiceGrpc.MathGeniusServiceImplB
         for(String s : this.operationCounterMap.keySet()) {
             System.out.println(s + " count: " + this.operationCounterMap.get(s));
         }
+        
+        // Tracking of new coming requests and data
+        int totalOperationsCount = 0;
+        for (int i : this.operationCounterMap.values()) {
+            totalOperationsCount += i;
+        }
+        System.out.println("-------------------------------------------------------");
+        System.out.println("                    NEW REQUEST                        ");
+        System.out.println("                  TOTAL REQUEST: " + totalOperationsCount);
+        System.out.println("-------------------------------------------------------");
     }
 
     void updateOperationCounter(String operationName) {
