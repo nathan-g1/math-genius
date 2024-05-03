@@ -10,17 +10,17 @@ import java.util.logging.Logger;
 
 public class MathGeniusServer {
 
+    static int PORT = 50051;
     private static final Logger logger = Logger.getLogger(MathGeniusServer.class.getName());
     private Server server;
 
     private void start() throws IOException {
         // The port the server should run
-        int port = 50051;
-        server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
+        server = Grpc.newServerBuilderForPort(PORT, InsecureServerCredentials.create())
                 .addService(new MathGeniusImpl())
                 .build()
                 .start();
-        logger.info("Server started, listening on port: " + port);
+        logger.info("Server started, listening on port: " + PORT);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run() {
